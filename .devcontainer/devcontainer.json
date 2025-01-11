@@ -1,0 +1,11 @@
+{
+  "name": "awscdk-devcontainer",
+  "image": "mejatos/aws-cdk:latest",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "forwardPorts": [],
+  "mounts": [],
+  "postCreateCommand": "echo 'Container ready!'",
+  "remoteUser": "appuser"
+}
