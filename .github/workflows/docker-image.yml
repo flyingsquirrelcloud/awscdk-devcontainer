@@ -11,28 +11,7 @@ permissions:
 
 env:
   FEATURE_BRANCH_BUMP_TYPE: patch
-  MAIN_BRANCH_BUMP_TYPE: minor
-
-# Patch preset versioning configuration:
-#
-# FEATURE_BRANCH_BUMP_TYPE: patch
-# MAIN_BRANCH_BUMP_TYPE: pre_l
-#
-# Bump Types:
-#	1.	major:
-#	•	Increments the major version.
-#	•	Resets the minor and patch versions to 0.
-#	•	Use this for breaking changes.
-#	•	Example: 1.2.3 → 2.0.0.
-#	2.	minor:
-#	•	Increments the minor version.
-#	•	Resets the patch version to 0.
-#	•	Use this for new features that are backward-compatible.
-#	•	Example: 1.2.3 → 1.3.0.
-#	3.	patch:
-#	•	Increments the patch version.
-#	•	Use this for bug fixes or small changes that don’t affect functionality.
-#	•	Example: 1.2.3 → 1.2.4.
+  MAIN_BRANCH_BUMP_TYPE: pre_l
 
 jobs:
   build-and-push:
