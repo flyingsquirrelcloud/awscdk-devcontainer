@@ -11,7 +11,12 @@ permissions:
 
 env:
   FEATURE_BRANCH_BUMP_TYPE: patch
-  MAIN_BRANCH_BUMP_TYPE: pre_l
+  MAIN_BRANCH_BUMP_TYPE: patch
+
+# Normal patch versioning operational config reference:
+#
+#  FEATURE_BRANCH_BUMP_TYPE: patch
+#  MAIN_BRANCH_BUMP_TYPE: pre_l
 
 jobs:
   build-and-push:
