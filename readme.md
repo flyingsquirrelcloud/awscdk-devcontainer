@@ -126,3 +126,57 @@ For more details and to access the Docker image, visit the [mejatos/aws-cdk Dock
 - Ensure that your local environment has Docker installed and properly configured to pull and run images from Docker Hub.
 - By incorporating the `mejatos/aws-cdk` Docker image into your workflow, you can enhance the efficiency and reliability of your AWS infrastructure development and deployment processes.
 
+### Versioning
+
+Each time a new feature branch is created, the semantic version for the intended production release must be set in advance. This ensures consistency and predictability in versioning across development and production environments.
+
+#### Semantic Versioning Guidelines
+
+If the current production version is `0.1.0`, follow the semantic versioning rules to determine the next version. For example, the next version might be `0.1.1` if only a patch update is required.
+
+#### Example Usage of `bump-my-version`
+
+The following command demonstrates how `bump-my-version` handles version increments:
+
+```bash
+$ bump-my-version show-bump 1.0.0-dev0
+1.0.0-dev0 ── bump ─┬─ major ─ 2.0.0-dev0
+                    ├─ minor ─ 1.1.0-dev0
+                    ├─ patch ─ 1.0.1-dev0
+                    ├─ pre_l ─ 1.0.0-rc0
+                    ╰─ pre_n ─ 1.0.0-dev1
+```
+
+#### Example Workflow
+
+**Example 1:**
+- A new feature branch starts with the version set to `0.1.1`. 
+  - After the first commit and push, the version increments to `0.1.1-dev1`.
+  - A subsequent commit and push on the same branch will result in `0.1.1-dev2`.
+  
+- When the feature branch (`0.1.1-dev2`) is merged into `main`, the version automatically updates to `0.1.2`.
+
+**Summary:**
+- **Pre-release dev versions** (`dev1`, `dev2`, etc.) and **patch updates** are automatically handled through branch management activities.
+- **Minor and major version updates** must be pre-determined and configured in advance for the next feature branch.
+
+#### Steps to Configure Versioning
+
+1. **Set `.bumpversion.toml` Configuration**:
+   - Update the `current_version` field in `.bumpversion.toml` to the desired semantic version. For example:
+     ```toml
+     current_version = "0.2.0"
+     ```
+
+2. **Modify `docker-image.yml` Configuration**:
+   - Adjust the branch-specific bump type logic:
+     ```yaml
+     - name: Determine Version Bump Type
+       id: determine-bump
+       run: |
+         if [[ "${{ github.ref_name }}" == "main" ]]; then
+           echo "BUMP_TYPE=patch" >> $GITHUB_ENV
+         else
+           echo "BUMP_TYPE=pre_n" >> $GITHUB_ENV
+         fi
+     ```

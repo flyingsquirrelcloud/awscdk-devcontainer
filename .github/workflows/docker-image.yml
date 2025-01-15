@@ -11,7 +11,7 @@ permissions:
 
 env:
   FEATURE_BRANCH_BUMP_TYPE: patch
-  MAIN_BRANCH_BUMP_TYPE: patch
+  MAIN_BRANCH_BUMP_TYPE: pre_l
 
 # Normal patch versioning operational config reference:
 #
@@ -54,9 +54,9 @@ jobs:
       id: determine-bump
       run: |
         if [[ "${{ github.ref_name }}" == "main" ]]; then
-          echo "BUMP_TYPE=pre_l" >> $GITHUB_ENV
-        else
           echo "BUMP_TYPE=patch" >> $GITHUB_ENV
+        else
+          echo "BUMP_TYPE=pre_n" >> $GITHUB_ENV
         fi
 
     - name: Bump version
