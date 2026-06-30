@@ -1,0 +1,6 @@
+.git
+.github
+doco
+*.md
+.bumpversion.toml
+.gitignore
