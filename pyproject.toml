@@ -1,0 +1,8 @@
+[project]
+name = "awscdk-devcontainer"
+version = "0.1.5"
+requires-python = ">=3.12"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
