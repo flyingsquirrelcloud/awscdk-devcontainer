@@ -6,7 +6,7 @@ ENV NODE_MAJOR=24
 # Install system deps + Node.js (via NodeSource) + AWS CLI in one layer
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends \
-        bash ca-certificates curl sudo unzip nano procps git \
+        bash ca-certificates curl sudo unzip nano procps git groff \
         python3 python3-venv python3-pip && \
     # Node.js via NodeSource (no nvm needed in containers)
     curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash - && \
