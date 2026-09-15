@@ -1,7 +1,7 @@
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV NODE_MAJOR=22
+ENV NODE_MAJOR=24
 
 # Install system deps + Node.js (via NodeSource) + AWS CLI in one layer
 RUN apt-get update -y && \
