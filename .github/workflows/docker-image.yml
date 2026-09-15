@@ -41,7 +41,7 @@ jobs:
         cache: ''
 
     - name: Install bump-my-version
-      run: pip install bump-my-version
+      run: pip install "bump-my-version==1.5.1"
 
     - name: Determine Version Bump Type
       id: determine-bump
@@ -54,7 +54,7 @@ jobs:
 
     - name: Bump version
       id: bump
-      uses: callowayproject/bump-my-version@master
+      uses: callowayproject/bump-my-version@1.5.1
       env:
         BUMPVERSION_TAG: "true"
       with:
